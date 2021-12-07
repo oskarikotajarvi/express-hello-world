@@ -12,9 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build, push and deploy to Heroku
+        id: heroku
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          api_key: ${{secrets.HEROKU_API_KEY}}
           email: "oskari.kotajarvi@gmail.com"
           docker_compose_file: './docker-compose-dev.yml'
           heroku_apps: '[{"imagename":"express-hello-world","appname":"exporess-hello-world","apptype":"web"}]'
