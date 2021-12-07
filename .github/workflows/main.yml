@@ -9,12 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Push to heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Build, push and deploy to Heroku
+        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "exporess-hello-world"
-          heroku_email: "oskari.kotajarvi@gmail.com"
-          usedocker: true
+          email: "oskari.kotajarvi@gmail.com"
+          docker_compose_file: './docker-compose-dev.yml'
+          heroku_apps: '[{"imagename":"express-hello-world","appname":"express-hello-world","apptype":"web"}]'
