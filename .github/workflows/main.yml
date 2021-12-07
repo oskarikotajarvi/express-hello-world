@@ -9,10 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Push to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "exporess-hello-world"
-        heroku_email: "oskari.kotajarvi@gmail.com"
-        usedocker: true
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "exporess-hello-world"
+          heroku_email: "oskari.kotajarvi@gmail.com"
+          usedocker: true
